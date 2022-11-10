@@ -1,0 +1,45 @@
+#!/bin/bash
+#script script 1
+
+bname=`basename $0`
+
+echo "This is script $bname"
+
+#IF Num of command lines less than 4 or greater than 4
+if [ $# -lt 1 -o $# -gt 4 ]
+then 
+	echo "Incorrect num of command lines"
+	echo "Needs 1 to 4 comman arguments"
+	exit
+fi
+
+if[$# -eq 1]
+then 
+	echo "1 command line argument"
+	echo "$1"
+fi
+
+if[ $# -eq 2 ]
+then 
+	echo "2 command line arguments"
+	echo "$1"
+	echo "$2"
+fi
+
+if[ $# -eq 3 ]
+then 
+	echo "3 command line arguments"
+	echo "$1"
+	echo "$2"
+	echo "$3"
+fi
+
+if[ $# -eq 4 ]
+then 
+	echo "4 command line arguments"
+	echo "$1"
+	echo "$2"
+	echo "$3"
+	echo "$4"
+fi
+

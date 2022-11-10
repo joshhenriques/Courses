@@ -1,0 +1,39 @@
+#!/bin/bash
+# script script2
+
+bname=`basename $0`
+echo "This is script $bname"
+
+# check number of command line arguments
+
+if [ $# -ne 1 ]
+then
+  echo "incorrect number of command line arguments"
+  echo "requires 1 command line argument"
+  exit
+fi
+
+
+# create the program
+echo "creating program $1.c"
+echo "#include <stdio.h>" > $1.c
+echo " " >> $1.c
+echo "void doit(char* x) {" >> $1.c
+echo "  printf(\"$1.c: %s\",x);" >> $1.c
+echo "}" >> $1.c
+echo " " >> $1.c
+echo "int main() {" >> $1.c
+echo "  char buf[1000];" >> $1.c
+echo "  printf(\"enter something: \");" >> $1.c
+echo "  fgets(buf,1000,stdin);" >> $1.c
+echo "  doit(buf);" >> $1.c
+echo "  return 0;" >> $1.c
+echo "}" >> $1.c
+
+# compile the program
+gcc -o x $1.c
+
+
+# executing the program
+echo "executing the compiled program $1.c"
+x

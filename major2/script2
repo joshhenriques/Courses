@@ -1,0 +1,24 @@
+echo "#include <stdio.h>" > test.c
+echo "extern int comp1();" >> test.c
+echo "extern int comp2();" >> test.c
+echo "extern int comp3();" >> test.c
+echo "int main() {" >> test.c
+echo "  printf(\"This is a system of three components: 1, 2, and 3\\n\");" >> test.c
+echo "  printf(\"Component 1\\n\");" >> test.c
+echo "  comp1();" >> test.c
+echo "  printf(\"Component 2\\n\");" >> test.c
+echo "  comp2();" >> test.c
+echo "  printf(\"Component 3\\n\");" >> test.c
+echo "  comp3();" >> test.c
+echo "  return 0;" >> test.c
+echo "}" >> test.c
+
+echo "#include <stdio.h>" > test1.c
+echo "int comp1() {" >> test1.c
+echo "  printf(\"Component 1: fully operational\\n\");" >> test1.c
+echo " return 0;" >> test1.c
+echo "}" >> test1.c
+
+make Complete
+Complete
+rm test.c test1.c test1.o test2.c test2.o test3.c test3.o Complete

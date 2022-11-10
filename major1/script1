@@ -1,0 +1,50 @@
+#!/bin/bash
+# script script1
+
+bname=`basename $0`
+echo "Major lab 1: bash script named $bname"
+
+if [ $# -ne 1 ]
+then
+	echo "$bname: wrong number of commandd line arguments"
+ 	echo "usage -- $bname"
+	exit
+fi
+
+if [ -d $1 ]
+then
+	#Exists
+	dd=`ls $1`
+
+	if [ -z $dd ]
+	then
+		#Is empty
+		echo "$bname: $1 directory exists and is empty"
+	else
+		#Is Full
+		echo "$bname: $1 directory exists, is non-empty, emptying it"
+		echo "$bname:contents of directory $1"
+		ls $1
+		echo "$bname: removing regular files from $1"
+
+		files=`ls $1`
+		for i in $files
+		do
+			if [ -f i ]
+			then 
+				rm i
+				echo "removing regular file $i from $1"	
+			fi	
+		done			
+	fi
+else
+	#DNE
+	mkdir $1
+fi
+
+cd $1
+echo "$bname: putting 3 required files in $1"
+echo "file1" > required.file1
+echo "file2" > required.file2
+echo "file3" > required.file3
+exit

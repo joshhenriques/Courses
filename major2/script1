@@ -1,0 +1,75 @@
+#!/bin/bash
+# script script1
+
+bname=`basename $0`
+echo "Major lab 1: bash script named $bname"
+
+if [ $# -ne 3 ]
+then
+	echo "wrong number of commandd line arguments, execution aborted"
+	exit
+fi
+
+echo "The source directory is $1 answer (YES/NO)"
+
+
+read answer
+while [ $answer != "NO" -a $answer != "YES" ] 
+do
+	echo "incorrect response, redo"
+	read answer
+done
+
+if [ $answer = "NO" ]
+then 
+	echo "you requested execution abortion"
+	exit
+fi
+
+echo "The destination directories are $2 and $3 (YES/NO)"
+
+read answer2
+while [ $answer2 != "NO" -a $answer2 != "YES" ] 
+do
+	echo "incorrect response, redo"
+	read answer2
+done
+if [ $answer = "NO" ]
+then 
+	echo "you requested execution abortion"
+	exit
+fi
+
+echo "moving files from $1 to $2, $3"
+
+#MOVE FILES
+files=`ls $1`
+
+#if directory is empty then exit
+if [ -z "$files" ]
+then 
+	exit
+fi
+
+for i in $files
+do  
+	x=`grep A $1/$i`
+	#Does not contain A
+	if [ -z "$x" ]
+	then
+		mv $1/$i $3
+	#Contains A
+	else
+		mv $1/$i $2
+	fi
+done
+exit
+
+
+
+
+
+
+
+
+

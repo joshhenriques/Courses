@@ -1,0 +1,27 @@
+#!/bin/bash
+#script script 2
+
+for i in {1..10}
+do
+	echo "$i$(($i+1))$(($i+2))" > lab1B_file_$i
+done
+
+# Extracting a substring in Bash: ${string:position:length}
+files=`ls`
+for f in $files
+do
+  if [ "${f:0:11}" = "lab1B_file_" ]
+  then
+    echo $f:
+    cat $f
+  fi
+done
+
+files=`ls`
+for f in $files
+do
+  if [ "${f:0:11}" = "lab1B_file_" ]
+  then
+    rm $f
+  fi
+done

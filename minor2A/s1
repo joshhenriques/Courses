@@ -1,0 +1,19 @@
+#!/bin/bash
+# script script1
+
+
+if [ $# -ne 3 ]
+then
+	echo "Wrong number of commandd line arguments"
+	exit
+fi
+
+for ((i=1; i<=$3; i++))
+do
+	if [ i -eq 1 ]
+	then
+		echo "$i, $2" > $1
+	else
+		echo "$i, $2" >> $1
+	fi
+done

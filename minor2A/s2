@@ -1,0 +1,16 @@
+#!/bin/bash
+# script script1
+
+bname=`basename $0`
+
+if [ $# -ne 4 ]
+then
+	echo "$bname: wrong number of commandd line arguments"
+	exit
+fi
+
+grep "$3\|$4" $1 > $2
+
+
+#final line
+echo "done" >> $2

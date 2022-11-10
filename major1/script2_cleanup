@@ -1,0 +1,24 @@
+#!/bin/bash
+# script script2_cleanup
+
+bname=`basename $0`
+echo "Major lab 1: bash script named $bname"
+
+if [ -r welcome -a -r welcome.c ]
+then
+	echo "script2‑cleanup: welcome and welcome.c removed"
+	rm welcome
+	rm welcome.c
+elif [ -r welcome ]
+then
+	echo "script2‑cleanup: welcome removed"
+	rm welcome
+elif [ -r welcome.c ]
+then
+	echo "script2‑cleanup: welcome.c removed"
+	rm welcome.c
+else
+	echo "nothing removed"
+fi
+exit
+

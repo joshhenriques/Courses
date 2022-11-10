@@ -1,0 +1,35 @@
+#!/bin/bash
+# script script2
+
+bname=`basename $0`
+echo "Major lab 1: bash script named $bname"
+
+if [ $# -ne 1 ]
+then
+	echo "$bname: wrong number of command line arguments"
+ 	echo "usage -- $bname josh"
+	exit
+fi
+
+if [ $1 = "Paul" -o $1 = "Peter" -o $1 = "Susan" -o  $1 = "Joan" ]
+then  
+	echo "$bname: $1's welcome"
+ 
+	echo "#include <stdio.h>" > welcome.c
+	echo "int main() {" >> welcome.c
+	echo "  printf("Hello $1, welcome and enjoy\n");" >> welcome.c
+	echo "  return 0;" >> welcome.c
+	echo "}" >> welcome.c
+else
+	echo "$bname: no applicable name supplied"
+	exit
+fi
+
+# compile the program
+gcc -o welcome welcome.c
+
+
+# executing the program
+welcome.c
+
+exit
